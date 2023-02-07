@@ -64,7 +64,7 @@ $file = fopen($filename, "r");
 /**
  * On se connecte à la base de données avec PDO et on prépare la requête d'insertion
  */
-$pdo = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8mb4', DB_USER, DB_PASS);
+$pdo = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8mb4', DB_USER, DB_PASSWORD);
 $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -87,16 +87,20 @@ while ($row = fgetcsv($file)) {
     $date = new DateTime();
     $newdate = $date->format('Y-m-d H:i:s');
 
+    
 
    $firstname = strtolower($firstname);
    $firstname = ucwords($firstname, ' -');
    $lastname = strtolower($lastname);
    $lastname = ucwords($lastname, ' -');
+   $email = strtolower($email);
+   $email = str_replace(" ", "", $email);
+
 
     /**
      * On enregistre ensuite le produit dans la base de données en exécutant la requête préparée plus haut
      */
-    $pdoStatement->execute([$name, $price]);
+    $pdoStatement->execute([$firstname, $lastname, $email, $newdate]);
 }
 
 echo 'Import terminé!';

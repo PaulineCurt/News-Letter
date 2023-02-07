@@ -16,22 +16,22 @@ if (!empty($_POST)) {
 
     // On récupère les données
     $email = trim($_POST['email']);
-    $firstname = trim($_POST['prenom']);
-    $lastname = trim($_POST['nom']);
+    $firstname = trim($_POST['firstname']);
+    $lastname = trim($_POST['lastname']);
 
     // On récupère l'origine
-    $origineSelectionnee = $_POST['origins'];
+    $origineSelectionnee = $_POST['origine'];
 
     // Validation 
     if (!$email) {
         $errors['email'] = "Merci d'indiquer une adresse mail";
     }
 
-    if (!$prenom) {
+    if (!$firstname) {
         $errors['firstname'] = "Merci d'indiquer un prénom";
     }
 
-    if (!$nom) {
+    if (!$lastname) {
         $errors['lastname'] = "Merci d'indiquer un nom";
     }
 
@@ -39,7 +39,7 @@ if (!empty($_POST)) {
     if (empty($errors)) {
 
         // Ajout de l'email dans le fichier csv
-        addSubscriber($email, $firstname, $lastname, $originsSelectionnee);
+        addSubscriber($email, $firstname, $lastname, $origineSelectionnee);
 
         // Message de succès
         $success  = 'Merci de votre inscription';
