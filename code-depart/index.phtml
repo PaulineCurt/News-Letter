@@ -37,24 +37,24 @@
                     <?php endif; ?>
                 </div>
                 <div class="field-list">
-                    <label for="prenom">Prénom</label>
-                    <input type="text" name="prenom" id="prenom" value="<?= $prenom ?>">
-                    <?php if (isset($errors['prenom'])) : ?>
-                        <p class="message error"><?= $errors['prenom']; ?></p>
+                    <label for="firstname">Prénom</label>
+                    <input type="text" name="firstname" id="firstname" value="<?= $firstname ?>">
+                    <?php if (isset($errors['firstname'])) : ?>
+                        <p class="message error"><?= $errors['firstname']; ?></p>
                     <?php endif; ?>
                 </div>
                 <div class="field-list">
-                    <label for="nom">Nom</label>
-                    <input type="text" name="nom" id="nom" value="<?= $nom ?>">
-                    <?php if (isset($errors['nom'])) : ?>
-                        <p class="message error"><?= $errors['nom']; ?></p>
+                    <label for="lastname">Nom</label>
+                    <input type="text" name="lastname" id="lastname" value="<?= $lastname ?>">
+                    <?php if (isset($errors['lastname'])) : ?>
+                        <p class="message error"><?= $errors['lastname']; ?></p>
                     <?php endif; ?>
                 </div>
                 <div class="field-list">
                     <label for="origine">Comment avez-vous connu notre site ?</label>
                     <select name="origine" id="origine">
                         <?php foreach ($origines as $origine) : ?>
-                            <option value="<?= $origine['id']; ?>"><?= $origine['origine_label']; ?></option>
+                            <option value="<?= $origine['id']; ?>"><?= $origine['origineLabel']; ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>

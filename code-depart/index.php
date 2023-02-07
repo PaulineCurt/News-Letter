@@ -8,19 +8,19 @@ require 'functions.php';
 $errors = [];
 $success = null;
 $email = '';
-$prenom = '';
-$nom = '';
+$firstname = '';
+$lastname = '';
 
 // Si le formulaire a été soumis...
 if (!empty($_POST)) {
 
     // On récupère les données
     $email = trim($_POST['email']);
-    $prenom = trim($_POST['prenom']);
-    $nom = trim($_POST['nom']);
+    $firstname = trim($_POST['prenom']);
+    $lastname = trim($_POST['nom']);
 
     // On récupère l'origine
-    $origineSelectionnee = $_POST['origine'];
+    $origineSelectionnee = $_POST['origins'];
 
     // Validation 
     if (!$email) {
@@ -28,18 +28,18 @@ if (!empty($_POST)) {
     }
 
     if (!$prenom) {
-        $errors['prenom'] = "Merci d'indiquer un prénom";
+        $errors['firstname'] = "Merci d'indiquer un prénom";
     }
 
     if (!$nom) {
-        $errors['nom'] = "Merci d'indiquer un nom";
+        $errors['lastname'] = "Merci d'indiquer un nom";
     }
 
     // Si tout est OK (pas d'erreur)
     if (empty($errors)) {
 
         // Ajout de l'email dans le fichier csv
-        addSubscriber($email, $prenom, $nom, $origineSelectionnee);
+        addSubscriber($email, $firstname, $lastname, $originsSelectionnee);
 
         // Message de succès
         $success  = 'Merci de votre inscription';
