@@ -20,7 +20,7 @@ function getAllOrigins()
 
     $sql = 'SELECT *
             FROM origins
-            ORDER BY origineLabel';
+            ORDER BY originLabel';
 
     $query = $pdo->prepare($sql);
     $query->execute();

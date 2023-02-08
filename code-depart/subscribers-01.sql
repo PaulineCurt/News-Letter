@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 07, 2023 at 10:25 AM
+-- Generation Time: Feb 08, 2023 at 09:17 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -32,6 +32,16 @@ CREATE TABLE `origins` (
   `origineLabel` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `origins`
+--
+
+INSERT INTO `origins` (`id`, `origineLabel`) VALUES
+(1, '...'),
+(2, 'Un ami m’en a parlé'),
+(3, 'Recherche sur internet'),
+(4, 'Publicité dans un magazine');
+
 -- --------------------------------------------------------
 
 --
@@ -46,6 +56,16 @@ CREATE TABLE `subscribers` (
   `lastname` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `idOrigins` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `subscribers`
+--
+
+INSERT INTO `subscribers` (`id`, `dateTime`, `email`, `firstname`, `lastname`, `idOrigins`) VALUES
+(2, '2023-02-07 13:14:50', 'alfred.dupont@gmail.com', 'Alfred', 'Dupont', NULL),
+(3, '2023-02-07 13:14:50', 'b.lav@hotmail.fr', 'Bertrand', 'Lavoisier', NULL),
+(4, '2023-02-07 13:14:50', 'sarahlamine@gmail.com', 'Sarah', 'Lamine', NULL),
+(5, '2023-02-07 13:14:50', 'mo78@laposte.net', 'Mohamed', 'Ben Salam', NULL);
 
 --
 -- Indexes for dumped tables
@@ -72,13 +92,13 @@ ALTER TABLE `subscribers`
 -- AUTO_INCREMENT for table `origins`
 --
 ALTER TABLE `origins`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `subscribers`
 --
 ALTER TABLE `subscribers`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables

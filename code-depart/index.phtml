@@ -51,10 +51,10 @@
                     <?php endif; ?>
                 </div>
                 <div class="field-list">
-                    <label for="origine">Comment avez-vous connu notre site ?</label>
-                    <select name="origine" id="origine">
-                        <?php foreach ($origines as $origine) : ?>
-                            <option value="<?= $origine['id']; ?>"><?= $origine['origineLabel']; ?></option>
+                    <label for="origin">Comment avez-vous connu notre site ?</label>
+                    <select name="origin" id="origin">
+                        <?php foreach ($origins as $origin) : ?>
+                            <option value="<?= $origin['id']; ?>"><?= $origin['originLabel']; ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -62,6 +62,7 @@
             </fieldset>
         </form>
     </main>
+
 
     <footer id="mentions" class="mentions">
         <p><strong> &copy; Olivier Meunier</strong>
