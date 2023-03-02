@@ -1,5 +1,7 @@
 <?php
 
+require 'functions.php';
+
 /**
  * Ce script importe dans la base de données "eshop" des données de produits 
  * dans une table "product". Cette table en plus de l'id contient 2 champs :
@@ -97,10 +99,14 @@ while ($row = fgetcsv($file)) {
    $email = str_replace(" ", "", $email);
 
 
-    /**
-     * On enregistre ensuite le produit dans la base de données en exécutant la requête préparée plus haut
-     */
-    $pdoStatement->execute([$firstname, $lastname, $email, $newdate]);
+    // Si le mail n'existe pas on enregistre le nouveau subscribers 
+    if(!emailExist($email)) {
+        $pdoStatement->execute([$firstname, $lastname, $email, $newdate]);
+        // Sinon message "d'erreur"
+    } else {
+        echo "L'adresse $email existe déjà \n";
+    }
+ 
 }
 
 echo 'Import terminé!';
