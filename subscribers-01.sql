@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 23, 2023 at 12:15 PM
+-- Generation Time: Mar 02, 2023 at 01:07 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -77,18 +77,25 @@ CREATE TABLE `subscribers` (
   `email` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `firstname` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `lastname` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `originId` int DEFAULT NULL,
-  `interestId` int DEFAULT NULL
+  `originId` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `subscribers`
 --
 
-INSERT INTO `subscribers` (`id`, `dateTime`, `email`, `firstname`, `lastname`, `originId`, `interestId`) VALUES
-(36, '2023-02-13 14:24:49', 'curtpauline@gmail.com', 'Pauline', 'Curt', 4, NULL),
-(37, '2023-02-13 14:28:32', 'curtpauline@gmail.com', 'Pauline', 'Curt', 2, NULL),
-(38, '2023-02-23 13:03:32', 'curtpauline@gmail.com', 'Pauline', 'Curt', 4, NULL);
+INSERT INTO `subscribers` (`id`, `dateTime`, `email`, `firstname`, `lastname`, `originId`) VALUES
+(44, '2023-03-02 10:39:05', 'cutpauline@gmail.com', 'Pauline', 'Curt', 4),
+(45, '2023-03-02 10:40:35', 'pauline@gmail.com', 'Pauline', 'Curt', 4),
+(46, '2023-03-02 11:21:43', 'okkok@gmail.com', 'Pauline', 'Curt', 2),
+(47, '2023-03-02 11:25:28', 'okoko@gmail.com', 'Pauline', 'Curt', 4),
+(48, '2023-03-02 11:27:05', 'jdej@gmail.com', 'Pauline', 'Curt', 4),
+(49, '2023-03-02 11:46:26', 'curtpauline@gmail.com', 'Pauline', 'Curt', 3),
+(50, '2023-03-02 11:00:08', 'alfred.dupont@gmail.com', 'Alfred', 'Dupont', NULL),
+(51, '2023-03-02 11:00:08', 'b.lav@hotmail.fr', 'Bertrand', 'Lavoisier', NULL),
+(52, '2023-03-02 11:00:08', 'sarahlamine@gmail.com', 'Sarah', 'Lamine', NULL),
+(53, '2023-03-02 11:00:08', 'mo78@laposte.net', 'Mohamed', 'Ben Salam', NULL),
+(54, '2023-03-02 14:07:18', 'toto@gmail.com', 'Pauline', 'Curt', 4);
 
 -- --------------------------------------------------------
 
@@ -97,9 +104,28 @@ INSERT INTO `subscribers` (`id`, `dateTime`, `email`, `firstname`, `lastname`, `
 --
 
 CREATE TABLE `subscribers_interest` (
-  `idInterest` int NOT NULL,
-  `idSubscribers` int NOT NULL
+  `interestId` int NOT NULL,
+  `subscriberId` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `subscribers_interest`
+--
+
+INSERT INTO `subscribers_interest` (`interestId`, `subscriberId`) VALUES
+(5, 44),
+(3, 44),
+(7, 45),
+(1, 45),
+(5, 46),
+(7, 46),
+(1, 46),
+(1, 47),
+(1, 48),
+(7, 49),
+(3, 49),
+(1, 54),
+(3, 54);
 
 --
 -- Indexes for dumped tables
@@ -122,15 +148,15 @@ ALTER TABLE `origins`
 --
 ALTER TABLE `subscribers`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_origins` (`originId`),
-  ADD KEY `fk_interests` (`interestId`);
+  ADD UNIQUE KEY `email` (`email`),
+  ADD KEY `fk_origins` (`originId`);
 
 --
 -- Indexes for table `subscribers_interest`
 --
 ALTER TABLE `subscribers_interest`
-  ADD KEY `fk_interestId` (`idInterest`),
-  ADD KEY `fk_subscribersId` (`idSubscribers`);
+  ADD KEY `fk_interestId` (`interestId`),
+  ADD KEY `fk_subscribersId` (`subscriberId`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -152,7 +178,7 @@ ALTER TABLE `origins`
 -- AUTO_INCREMENT for table `subscribers`
 --
 ALTER TABLE `subscribers`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- Constraints for dumped tables
@@ -162,15 +188,14 @@ ALTER TABLE `subscribers`
 -- Constraints for table `subscribers`
 --
 ALTER TABLE `subscribers`
-  ADD CONSTRAINT `fk_interests` FOREIGN KEY (`interestId`) REFERENCES `interests` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   ADD CONSTRAINT `fk_origins` FOREIGN KEY (`originId`) REFERENCES `origins` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Constraints for table `subscribers_interest`
 --
 ALTER TABLE `subscribers_interest`
-  ADD CONSTRAINT `fk_interestId` FOREIGN KEY (`idInterest`) REFERENCES `interests` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `fk_subscribersId` FOREIGN KEY (`idSubscribers`) REFERENCES `subscribers` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `fk_interestId` FOREIGN KEY (`interestId`) REFERENCES `interests` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `fk_subscribersId` FOREIGN KEY (`subscriberId`) REFERENCES `subscribers` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
