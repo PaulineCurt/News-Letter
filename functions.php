@@ -51,8 +51,6 @@ function getAllInterests()
     return $query->fetchAll();
 }
 
-
-
 // Ajoute un abonné à la liste des emails
 function addSubscriber(string $email, string $firstname, string $lastname, int $originId)
 {
@@ -84,9 +82,7 @@ function addInterestSubscriber(int $userID, int $interestID)
     $query->execute([$userID, $interestID]);
 }
 
-
-
-
+// Vérifie si l'email est déjà présent dans la BDD
 function emailExist(string $email)
 {
     // Construction du Data Source Name
