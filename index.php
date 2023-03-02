@@ -51,7 +51,7 @@ if (!empty($_POST)) {
     if (!$interest) {
         $errors['interest'] = "Merci de cocher au moins un centre d'interêt";
     }
- 
+    
     // Si tout est OK (pas d'erreur)
     if (empty($errors)) {
 
