@@ -23,7 +23,6 @@
     </header>
     <main class="project">
         <form id="subscribe-form" action="index.php" method="POST">
-
             <?php if (isset($success)) : ?>
                 <p class="message success"><?= $success; ?></p>
             <?php endif; ?>
@@ -67,7 +66,7 @@
                   echo "checked";} ?>>
                 <label for="interest-<?= $interest['id'];?>"><?= $interest['interestLabel']; ?></label><br>
                 <?php endforeach;?>
-                
+            
                 <?php if (isset($errors['interest'])) : ?>
                         <p class="message error"><?= $errors['interest']; ?></p>
                     <?php endif; ?>
